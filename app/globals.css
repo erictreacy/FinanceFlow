@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: var(--font-inter);
+
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-relaxed font-sans;
+  }
+  h2 {
+    @apply font-sans;
+    line-height: 1.5;
+  }
+  p {
+    @apply leading-relaxed font-sans;
+  }
+}
+
+/* Custom styles for the budget app */
+.status-safe {
+  @apply bg-green-500 text-white;
+}
+
+.status-warning {
+  @apply bg-orange-400 text-white;
+}
+
+.status-danger {
+  @apply bg-red-500 text-white;
+}
+
+/* Custom animation for loading states */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom styles for the expense categories */
+.category-dot {
+  @apply w-3 h-3 rounded-full inline-block mr-2;
+}
+
+/* Custom styles for the login page */
+.login-container {
+  @apply min-h-screen flex flex-col;
+}
+
+.login-header {
+  @apply container mx-auto py-4 flex justify-between items-center border-b;
+}
+
+.login-main {
+  @apply flex-1 container mx-auto py-16 px-4 max-w-md;
+}
+
+.login-footer {
+  @apply container mx-auto py-6 text-center text-sm text-gray-500;
+}
+
+/* Custom styles for the dashboard */
+.dashboard-container {
+  @apply max-w-4xl mx-auto;
+}
+
+.dashboard-header {
+  @apply flex justify-between items-center mb-8;
+}
+
+.dashboard-title {
+  @apply text-3xl font-bold leading-relaxed;
+}
+
+.dashboard-amount {
+  @apply px-2 py-1 rounded font-bold;
+}
+
+.dashboard-table {
+  @apply w-full border rounded-md overflow-hidden;
+}
+
+.dashboard-table th {
+  @apply text-left p-4 border-b;
+}
+
+.dashboard-table td {
+  @apply p-4 border-b;
+}
+
+/* Custom styles for the account page */
+.account-container {
+  @apply max-w-2xl mx-auto py-8;
+}
+
+.account-title {
+  @apply text-3xl font-bold mb-8 leading-relaxed;
+}
+
+.account-form {
+  @apply space-y-6;
+}
+
+.account-input {
+  @apply bg-gray-100;
+}
+
+.account-delete {
+  @apply text-red-500 hover:text-red-700 flex items-center mt-8;
+}
+
+/* Header styles */
+.header-container {
+  @apply py-3 flex justify-between items-center;
+}
+
+.header-logo {
+  @apply text-xl font-bold leading-relaxed;
+}
+
+.header-nav {
+  @apply flex items-center gap-4 sm:gap-6;
+}
+
+.header-link {
+  @apply text-sm font-medium leading-relaxed transition-colors hover:text-primary;
+}
+
+.header-button {
+  @apply h-9 px-4 py-0 leading-relaxed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .dashboard-header {
+    @apply flex-col items-start gap-4;
+  }
+
+  .dashboard-table th:nth-child(3),
+  .dashboard-table td:nth-child(3) {
+    @apply hidden;
+  }
+
+  .header-container {
+    @apply py-2;
+  }
+
+  .header-logo {
+    @apply text-lg;
+  }
+
+  .header-nav {
+    @apply gap-3;
+  }
+}
